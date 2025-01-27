@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>tsl_ros2_publisher_py</name>
+  <version>1.0.0</version>
+  <description>A package for publishing logged time series of a module in ROS 2.</description>
+  <maintainer email="simon.sagmeister@tum.de">Simon Sagmeister</maintainer>
+  <license>Apache 2.0</license>
+
+  <author email="simon.sagmeister@tum.de">Simon Sagmeister</author>
+
+  <buildtool_depend>ament_cmake_ros</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+  <buildtool_depend>python_cmake_module</buildtool_depend>
+
+  <depend>pybind11_vendor</depend>
+
+  <!-- Content dependencies -->
+  <depend>tsl_ros2_publisher_cpp</depend>
+
+  <exec_depend>tsl_logger_py</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
