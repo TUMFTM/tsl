@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include <variant>
+#include <cstdint>
 namespace tam::tsl
 {
 
