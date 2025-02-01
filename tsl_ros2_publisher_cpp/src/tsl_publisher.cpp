@@ -12,11 +12,11 @@ TSLPublisher::TSLPublisher(
   // If we would use a normal publisher we would have to disable ipc to not throw an exception
   // if the node is part of another executor.
   definition_publisher_ = node_handle->create_generic_publisher(
-    std::string("/tsl") + node_handle->get_fully_qualified_name() + channel_suffix_cleaned +
+    std::string("/debug") + node_handle->get_fully_qualified_name() + channel_suffix_cleaned +
       "/def",
     "tsl_msgs/msg/TSLDefinition", qos_tsl_definition_);
   value_publisher_ = node_handle->create_generic_publisher(
-    std::string("/tsl") + node_handle->get_fully_qualified_name() + channel_suffix_cleaned,
+    std::string("/debug") + node_handle->get_fully_qualified_name() + channel_suffix_cleaned,
     "tsl_msgs/msg/TSLValues", qos_tsl_values_);
 }
 void TSLPublisher::trigger()

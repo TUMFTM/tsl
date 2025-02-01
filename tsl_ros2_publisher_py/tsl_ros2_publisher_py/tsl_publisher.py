@@ -35,12 +35,12 @@ class TSLPublisher:
 
         self._definition_publisher = node_handle.create_publisher(
             TSLDefinition,
-            f"/tsl{node_handle.get_fully_qualified_name()}{channel_suffix_cleaned}/def",
+            f"/debug{node_handle.get_fully_qualified_name()}{channel_suffix_cleaned}/def",
             self.__class__._qos_tsl_definition,
         )
         self._value_publisher = node_handle.create_publisher(
             TSLValues,
-            f"/tsl{node_handle.get_fully_qualified_name()}{channel_suffix_cleaned}",
+            f"/debug{node_handle.get_fully_qualified_name()}{channel_suffix_cleaned}",
             self.__class__._qos_tsl_values,
         )
 
