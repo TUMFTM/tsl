@@ -30,7 +30,7 @@ You should also check out the other 2 excellent libaries ([Data Tamer](https://g
 
 ## Architecture
 
-![TSL Scheme](./docs/tsl_scheme.svg)
+![TSL Scheme](./docs/tsl_scheme.drawio.svg)
 
 The logger is completely independent from the publisher and allows to keep your function code independent from ROS 2. It is that independent, that one could write the logged signals into a csv instead of publishing them in ROS 2.
 However, since writing to disk is a bad idea in real-time applications, we haven't bothered implementing a csv-writer on top of the ROS 2 publisher.
