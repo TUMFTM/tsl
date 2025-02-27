@@ -18,7 +18,6 @@ target_include_directories(${PROJECT_NAME}
         $<INSTALL_INTERFACE:include>
 )
 target_compile_features(${PROJECT_NAME} INTERFACE c_std_99 cxx_std_17)
-target_compile_options(${PROJECT_NAME} INTERFACE -O3)
 
 install(
   DIRECTORY include/

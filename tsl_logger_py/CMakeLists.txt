@@ -43,8 +43,6 @@ pybind11_add_module(_cpp_binding SHARED
   src/_cpp_binding.cpp
 )
 
-target_compile_options(_cpp_binding PUBLIC -Ofast)
-
 
 ament_target_dependencies(_cpp_binding PUBLIC
    tsl_logger_cpp
