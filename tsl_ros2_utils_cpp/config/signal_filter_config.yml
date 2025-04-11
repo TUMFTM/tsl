@@ -1,0 +1,14 @@
+/TSL_Signal_Filter:
+  ros__parameters:
+    signals_remaining_after_filter: ["signal_1", "signal_2"]
+    timer_periods_ms:
+      definition_trigger: 4000
+      values_trigger: 100
+    topics:
+      publisher:
+        definition: /tsl/node_name/def/filtered
+        values: /tsl/node_name/filtered
+      subscription:
+        definition: /tsl/node_name/def
+        values: /tsl/node_name
+
