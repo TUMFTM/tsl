@@ -1,0 +1,11 @@
+/TSL_Signal_Filter:
+  ros__parameters:
+    signals_remaining_after_filter: ["Pathmatching_d"]
+    timer_periods_ms:
+      definition_trigger: 4000
+      values_trigger: 100
+    topics:
+      subscription:
+        definition: /debug/core/control/TrackingController/def
+        values: /debug/core/control/TrackingController
+
