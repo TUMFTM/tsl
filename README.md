@@ -75,6 +75,10 @@ Values message size: 4064 bytes
 | [`tsl_ros2_publisher_py`](./tsl_ros2_publisher_py/) | [`Examples`](./tsl_ros2_publisher_py/examples) | Python Binding | 
 
 
+Furthermore, there are additional packages can be found under `./experimental`. 
+These experimental packages are not as well documented and tested as the other packages in this repository.
+Therefore, using these packages at your own discretion.
+
 ## Compilation
 
 Everything should just compile using colcon. The packages `tsl_logger_cpp` and `tsl_logger_py` should compile without ROS 2 installed. 
