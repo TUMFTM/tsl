@@ -17,6 +17,8 @@ find_package(tsl_ros2_publisher_cpp REQUIRED)
 
 add_library(${PROJECT_NAME} SHARED
   src/signal_filter.cpp
+  src/ros2_parser.cpp
+  src/tsl_subscriber.cpp
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -90,6 +92,6 @@ install(TARGETS ${PROJECT_NAME}_components
 # ==============================================================================
 # GENERAL 
 # ==============================================================================
-ament_export_dependencies(rclcpp tsl_msgs tsl_logger_cpp tsl_ros2_publisher_cpp) # other dependencies so client does not need to call find_package on them
+ament_export_dependencies(rclcpp tsl_msgs tsl_logger_cpp tsl_ros2_publisher_cpp rclcpp_components) # other dependencies so client does not need to call find_package on them
 
 ament_package()
