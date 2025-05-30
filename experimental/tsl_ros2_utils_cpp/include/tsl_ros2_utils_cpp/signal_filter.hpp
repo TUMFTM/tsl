@@ -27,8 +27,8 @@ class TSLSignalFilter : public rclcpp::Node
 
 private:
   // QOS Settings
-  const rclcpp::QoS qos_tsl_definition_ = rclcpp::QoS(1);
-  const rclcpp::QoS qos_tsl_values_ = rclcpp::QoS(1);
+  const rclcpp::QoS qos_tsl_definition_ = rclcpp::QoS(1).best_effort();
+  const rclcpp::QoS qos_tsl_values_ = rclcpp::QoS(1).best_effort();
 
 private:
   // Store messages here for cashing
