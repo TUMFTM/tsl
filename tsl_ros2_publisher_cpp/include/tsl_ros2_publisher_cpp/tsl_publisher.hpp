@@ -44,8 +44,8 @@ private:
 public:
   /// @brief Create a ros2 time series logging publisher.
   /// @brief The topics published by this publisher will be:
-  /// @brief - `/tsl/${fully_qualified_node_name}/${channel_suffix}/def`
-  /// @brief - `/tsl/${fully_qualified_node_name}/${channel_suffix}`
+  /// @brief - `/debug/${fully_qualified_node_name}/${channel_suffix}/def`
+  /// @brief - `/debug/${fully_qualified_node_name}/${channel_suffix}`
   /// @param node_handle
   /// @param logger
   /// @param channel_suffix
