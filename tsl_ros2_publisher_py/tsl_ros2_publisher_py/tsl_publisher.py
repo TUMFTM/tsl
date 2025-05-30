@@ -1,6 +1,7 @@
 # Copyright 2024 Simon Sagmeister
 import rclpy
 from rclpy.node import Node
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 from tsl_msgs.msg import TSLDefinition, TSLValues
 from tsl_logger_py import LoggerAccessInterface
 from tsl_ros2_publisher_py.builtin_compression_strategies import Compress64to32Bit
@@ -14,8 +15,12 @@ from tsl_ros2_publisher_py.definition_trigger import DefinitionTriggerTimer
 
 class TSLPublisher:
 
-    _qos_tsl_definition = 1
-    _qos_tsl_values = 1
+    _qos_tsl_definition = QoSProfile(
+        reliability=ReliabilityPolicy.BEST_EFFORT,
+        history=HistoryPolicy.KEEP_LAST,
+        depth=1,
+    )
+    _qos_tsl_values = _qos_tsl_definition
 
     def __init__(
         self,

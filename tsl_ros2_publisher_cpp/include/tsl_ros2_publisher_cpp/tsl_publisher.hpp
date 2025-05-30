@@ -22,8 +22,8 @@ public:
   using UniquePtr = std::unique_ptr<TSLPublisher>;
 
 private:
-  const rclcpp::QoS qos_tsl_definition_ = rclcpp::QoS(1);
-  const rclcpp::QoS qos_tsl_values_ = rclcpp::QoS(1);
+  const rclcpp::QoS qos_tsl_definition_ = rclcpp::QoS(1).best_effort();
+  const rclcpp::QoS qos_tsl_values_ = rclcpp::QoS(1).best_effort();
 
   // Storage for the ros2 entities
 private:
