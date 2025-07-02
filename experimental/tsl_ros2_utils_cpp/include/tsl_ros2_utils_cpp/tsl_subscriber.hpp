@@ -1,9 +1,9 @@
 // Copyright 2025 Simon Sagmeister
 #pragma once
 
+#include <memory>
 #include <rclcpp/rclcpp.hpp>
 #include <string>
-#include <memory>
 #include <tsl_msgs/msg/tsl_definition.hpp>
 #include <tsl_msgs/msg/tsl_values.hpp>
 #include <tsl_ros2_utils_cpp/ros2_parser.hpp>
@@ -11,15 +11,19 @@ namespace tam::tsl
 {
 class TSLSubscriber
 {
+  // QOS Settings
+  const rclcpp::QoS qos_tsl_definition_ = rclcpp::QoS(1).best_effort();
+  const rclcpp::QoS qos_tsl_values_ = rclcpp::QoS(1).best_effort();
+
 public:
   TSLSubscriber(
-    rclcpp::Node * node, const std::string & definition_topic,
-    const std::string & values_topic)
+    rclcpp::Node * node, const std::string & definition_topic, const std::string & values_topic)
   : definition_sub_(node->create_subscription<tsl_msgs::msg::TSLDefinition>(
-      definition_topic, 1,
+      definition_topic, qos_tsl_definition_,
       std::bind(&TSLSubscriber::definition_callback, this, std::placeholders::_1))),
     values_sub_(node->create_subscription<tsl_msgs::msg::TSLValues>(
-      values_topic, 1, std::bind(&TSLSubscriber::values_callback, this, std::placeholders::_1)))
+      values_topic, qos_tsl_values_,
+      std::bind(&TSLSubscriber::values_callback, this, std::placeholders::_1)))
   {
   }
   ROS2Parser::ConstSharedPtr get_parser();
