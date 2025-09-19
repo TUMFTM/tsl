@@ -43,6 +43,24 @@ pybind11_add_module(_cpp_binding SHARED
   src/_cpp_binding.cpp
 )
 
+# Compilation flags
+set(SP_ARCH_OPTS
+  # $<$<NOT:$<CONFIG:Debug>>:-march=x86-64-v3>
+  # $<$<NOT:$<CONFIG:Debug>>:-mtune=znver3>
+)
+set(SP_FAST_OPTS
+        $<$<NOT:$<CONFIG:Debug>>:-O3>
+        $<$<NOT:$<CONFIG:Debug>>:-DNDEBUG>
+        )
+# Optional Debug niceties 
+set(SP_DEBUG_OPTS
+  $<$<CONFIG:Debug>:-O0>
+  $<$<CONFIG:Debug>:-g3>
+  $<$<CONFIG:Debug>:-fno-omit-frame-pointer>
+)
+target_compile_options(_cpp_binding PRIVATE ${SP_ARCH_OPTS} ${SP_FAST_OPTS} ${SP_DEBUG_OPTS})
+
+
 
 ament_target_dependencies(_cpp_binding PUBLIC
    tsl_logger_cpp

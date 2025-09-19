@@ -26,6 +26,22 @@ target_include_directories(${PROJECT_NAME}
 )
 target_compile_features(${PROJECT_NAME} PUBLIC c_std_99 cxx_std_17)
 
+# Compilation flags
+set(SP_ARCH_OPTS
+  # $<$<NOT:$<CONFIG:Debug>>:-march=x86-64-v3>
+  # $<$<NOT:$<CONFIG:Debug>>:-mtune=znver3>
+)
+set(SP_FAST_OPTS
+        $<$<NOT:$<CONFIG:Debug>>:-O3>
+        $<$<NOT:$<CONFIG:Debug>>:-DNDEBUG>
+        )
+# Optional Debug niceties 
+set(SP_DEBUG_OPTS
+  $<$<CONFIG:Debug>:-O0>
+  $<$<CONFIG:Debug>:-g3>
+  $<$<CONFIG:Debug>:-fno-omit-frame-pointer>
+)
+target_compile_options(${PROJECT_NAME} PRIVATE ${SP_ARCH_OPTS} ${SP_FAST_OPTS} ${SP_DEBUG_OPTS})
 
 ament_target_dependencies(
   ${PROJECT_NAME} 
