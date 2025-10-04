@@ -24,6 +24,8 @@ private:
   // The number of signals that were present during setting up the definition.
   // We use this as indication that no signals were added later on.
   std::size_t init_size{0};
+  // Remember the number of non-logged signals to only print a warning once
+  std::size_t last_num_non_logged_signals_{0};
   // Is needed regularly this is why we create the instance once
   rclcpp::Serialization<tsl_msgs::msg::TSLValues> values_serializer_{};
   rclcpp::SerializedMessage def_msg_serialized_{};

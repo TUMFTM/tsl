@@ -38,15 +38,18 @@ void MsgCreator::print_warning_added_signals(data_map_t const & data)
     data_set.insert(map_entry.first);
   }
 
-  // Compate the 2 sets
+  // Do not print a warning if the number of non-logged signals did not change
+  if (data_set.size() - def_set.size() == last_num_non_logged_signals_) return;
+  last_num_non_logged_signals_ = data_set.size() - def_set.size();
+  // Compare the 2 sets
   std::unordered_set<std::string> diff_set;
-  std::set_difference(
-    data_set.begin(), data_set.end(), def_set.begin(), def_set.end(),
-    std::inserter(diff_set, diff_set.begin()));
+  for (auto const & name : data_set) {
+    if (def_set.find(name) == def_set.end()) diff_set.insert(name);
+  }
 
   // Return without updating the values
   std::cout << "TSLPublisher | Additional signals were logged after first publishing your "
-               "time:";
+               "time: ";
   for (auto const & new_signal : diff_set) {
     std::cout << new_signal << ", ";
   }
