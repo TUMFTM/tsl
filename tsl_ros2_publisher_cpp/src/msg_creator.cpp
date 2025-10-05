@@ -39,6 +39,7 @@ void MsgCreator::print_warning_added_signals(data_map_t const & data)
   }
 
   // Do not print a warning if the number of non-logged signals did not change
+  if (data_set.size() < def_set.size()) return;  // Ensure no underflow
   if (data_set.size() - def_set.size() == last_num_non_logged_signals_) return;
   last_num_non_logged_signals_ = data_set.size() - def_set.size();
   // Compare the 2 sets
