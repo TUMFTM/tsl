@@ -64,6 +64,21 @@ inline void log(
     log<T>(logger, name + "/" + key, value);
   }
 }
+// Map with variant values
+template <typename... Types>
+inline void log(
+  TypeSupportInterface * logger, std::string const & name,
+  std::map<std::string, std::variant<Types...>> const & map)
+{
+  for (auto const & [key, value] : map) {
+    std::visit(
+      [&](auto const & v) {
+        using V = std::decay_t<decltype(v)>;
+        log<V>(logger, name + "/" + key, v);
+      },
+      value);
+  }
+}
 // Unordered Map
 template <typename T>
 inline void log(
@@ -72,6 +87,21 @@ inline void log(
 {
   for (auto const & [key, value] : map) {
     log<T>(logger, name + "/" + key, value);
+  }
+}
+// Unordered Map with variant values
+template <typename... Types>
+inline void log(
+  TypeSupportInterface * logger, std::string const & name,
+  std::unordered_map<std::string, std::variant<Types...>> const & map)
+{
+  for (auto const & [key, value] : map) {
+    std::visit(
+      [&](auto const & v) {
+        using V = std::decay_t<decltype(v)>;
+        log<V>(logger, name + "/" + key, v);
+      },
+      value);
   }
 }
 // endregion
