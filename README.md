@@ -19,7 +19,7 @@ You should also check out the other 2 excellent libaries ([Data Tamer](https://g
 - Preserialization of Definition Message: Saves CPU Resources since the definition is preserialized and cached before it is sent out.
 - Allows modules to stay **ROS 2 independent**: Because of a clear separation of logger and publisher, using the logger does not introduce a ROS 2 dependency in your code.
 - **Signal Compression**: Use custom compression strategies in order to reduce bandwidth and storage requirements for your logged signals. See this [Example](./tsl_ros2_publisher_cpp/examples/compression.cpp).
-- **PlotJuggler** Support: PlotJuggler automatically parses all logged time series signals. At the moment, this requires a custom version of PlotJuggler ([get it here](https://github.com/simonsag96/PlotJuggler/tree/add_support_tsl_messages)). However, a merge request to integrate this in the official version of PlotJuggler is pending.
+- **PlotJuggler** Support: [PlotJuggler](https://github.com/PlotJuggler/PlotJuggler) automatically parses all logged time series signals. 
 - **Different Logging Strategies**: You can either log values explicitly by value or by just storing their memory address. Consider these examples: [Reference Logger](./tsl_logger_cpp/examples/reference_logger.cpp) | [Value Logger](./tsl_logger_cpp/examples/value_logger.cpp)
 
 
