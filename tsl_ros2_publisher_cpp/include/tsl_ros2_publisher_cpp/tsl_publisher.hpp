@@ -50,11 +50,14 @@ public:
   /// @param logger
   /// @param channel_suffix
   /// @param compression_strategy
+  /// @param use_node_name Whether to include the node's fully qualified name in the topic.
+  /// When false, topics are published below `/tsl` using only `channel_suffix`.
   explicit TSLPublisher(
     rclcpp::Node * node_handle, LoggerAccessInterface::SharedPtr logger,
     const std::string & channel_suffix = "",
     CompressionStrategy::SharedPtr compression_strategy =
-      std::make_shared<builtin_compression_strategies::Compress64to32Bit>());
+      std::make_shared<builtin_compression_strategies::Compress64to32Bit>(),
+    bool use_node_name = true);
   /// @brief Publish the logged data. This function also publishes the definition whenever it is
   /// necessary.
   /// @brief The first call of this function will lock the definition for which signals will be
