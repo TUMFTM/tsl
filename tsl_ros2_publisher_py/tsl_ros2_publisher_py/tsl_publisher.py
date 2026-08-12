@@ -28,6 +28,7 @@ class TSLPublisher:
         logger: LoggerAccessInterface,
         channel_suffix: str = "",
         compression_strategy: CompressionStrategy = Compress64to32Bit(),
+        use_node_name: bool = True,
     ):
         self._node_handle = node_handle
         self._logger = logger
@@ -37,15 +38,20 @@ class TSLPublisher:
         self._msg_converter = MsgCreator(self._compression_strategy)
 
         channel_suffix_cleaned = clean_signal_name(channel_suffix)
+        topic_base = (
+            f"/debug{node_handle.get_fully_qualified_name()}"
+            if use_node_name
+            else "/debug/"
+        ) + channel_suffix_cleaned
 
         self._definition_publisher = node_handle.create_publisher(
             TSLDefinition,
-            f"/debug{node_handle.get_fully_qualified_name()}{channel_suffix_cleaned}/def",
+            f"{topic_base}/def",
             self.__class__._qos_tsl_definition,
         )
         self._value_publisher = node_handle.create_publisher(
             TSLValues,
-            f"/debug{node_handle.get_fully_qualified_name()}{channel_suffix_cleaned}",
+            topic_base,
             self.__class__._qos_tsl_values,
         )
 

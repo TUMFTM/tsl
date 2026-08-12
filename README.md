@@ -37,6 +37,8 @@ However, since writing to disk is a bad idea in real-time applications, we haven
 
 The ROS 2 publisher just takes the reference to the logger in order retrieve the logged values. These are then published to the topic `/tsl/<fully_qualified_node_name>` along with a definition (the signal names in the same order as they are represented in the values msg) to `/tsl/<fully_qualified_node_name>/def`. In order to save bandwidth, by default the definition is only published once every 4 seconds.
 
+Pass `use_node_name=false` (C++) or `use_node_name=False` (Python) to `TSLPublisher` to omit the node name from the topic. The publisher then uses `/tsl` plus the optional channel suffix.
+
 
 ## Minimum Working Example
 
