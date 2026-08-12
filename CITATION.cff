@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+title: "TSL: Time Series Logging"
+type: software
+abstract: >-
+  TSL (Time Series Logging) is a library for cyclically logging a large number of time
+  series signals from C++ and Python with very low overhead (~69 ns per signal). It
+  targets real-time robotics software, where frequently changing internal debug signals
+  would otherwise break the compatibility of previously recorded rosbags on every ROS 2
+  message definition change. The logger is separated from the publisher, so
+  instrumenting a module introduces no ROS 2 dependency and parsing the published
+  ROS 2 messages is supported by PlotJuggler.
+authors:
+  - family-names: "Sagmeister"
+    given-names: "Simon"
+    orcid: "https://orcid.org/0009-0002-9246-5456"
+    affiliation: "Technical University of Munich, Germany; School of Engineering and Design, Department of Mobility Systems Engineering, Institute of Automotive Technology"
+    email: "simon.sagmeister@tum.de"
+license: Apache-2.0
+keywords:
+  - "ROS 2"
+  - "robotics"
+  - "logging"
+  - "time series"
+  - "telemetry"
+  - "data recording"
+  - "real-time systems"
+  - "autonomous driving"
+  - "autonomous racing"
+  - "C++"
+  - "Python"
+repository-code: "https://github.com/TUMFTM/tsl"
+url: "https://github.com/TUMFTM/tsl"
+version: "1.0.0"
+date-released: "2026-08-11"
+doi: "10.5281/zenodo.21888678"
